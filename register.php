@@ -64,7 +64,6 @@ if (Input::exists()) {
         echo $error, '<br>';
       }
     }
-
 }
 ?>
 
@@ -129,7 +128,7 @@ if (Input::exists()) {
           
         </div>
           <div id="sbmt">
-            <input type="submit" id="reg-submit" name="regester" value="Register">
+            <input type="submit" id="reg-submit" name="register" value="Register">
           </div>
         </form>
         

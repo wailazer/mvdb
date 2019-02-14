@@ -40,13 +40,12 @@ require_once 'core/init.php';
           $user = new User();
           if ($user->loggedIn()) {
           ?>
-
-            <script type"text/javascript">
-               window.alert("Sign in success!<br>Thank you!")
-            </script>
-            <a href="logout.php">log out</a>
-
-
+           <script type"text/javascript">
+           if (!sessionStorage.getItem("visit")){
+                      window.alert("Sign in success!<br>Thank you!"); 
+                    } 
+                    sessionStorage.setItem("visit", "1");
+                    </script>
           <?php
           }else{
             echo 'nope!';

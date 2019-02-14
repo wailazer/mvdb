@@ -48,11 +48,67 @@
   cursor: pointer;
 }
 
+
 </style>
+<?php
+require_once 'core/init.php';
+$user = new User();
+// print_r($user->getData()->age);
+// $user->updateProfile(array('agee' => 40));
+// print_r($user->getData()->age);
+
+
+
+if (Input::exists()) {
+  
+  // echo Input::get('email');
+  $validate = new Validate();
+  $validation = $validate->check($_POST, array(
+      // 'newPass' => array(
+      //     'min' => 8,
+      //     'required' => true,
+      // ),
+      
+      // 're-newPass' => array(
+      // 'required' => true,
+      // 'matches' => 'newPass'
+      // ),
+  ));
+  // if ($validation->passed()) {
+      $fields = array();
+      if (!empty(Input::get('email')) ){
+        $fields['email'] = Input::get('email');
+      }
+      if (!empty(Input::get('newPass'))){
+        $fields['pwd']= Input::get('newPass');
+      }
+      if (!empty(Input::get('name'))){
+        $fields['firstName']= Input::get('name');
+      }
+      if (!empty(Input::get('surname'))){
+        $fields['lastName']= Input::get('surname');
+      }
+      if (!empty(Input::get('age'))){
+        $fields['age']= Input::get('age');
+      }
+        // print_r($fields);
+      try {
+          $user->updateProfile($fields);
+          header("Refresh:0");
+      } catch ( Exception $e) {
+          die($e->getMessage());
+      }
+  // }else {
+  //     foreach ($validation->getErrors() as $error) {
+  //       echo $error, '<br>';
+  //     }
+  // }
+}
+
+?>
 </head>
 <body>
-
-<h2>Modal Example</h2>
+<h2>MUpdate profile</h2>
 
 <!-- Trigger/Open The Modal -->
 <button id="openPassWindow">change password</button>
@@ -68,6 +124,29 @@
         <button id='submit' onclick='changePassword()'>submit</button>
     </div>
 </div>
+
+<div id="userEdit" style='display: table-cell'>
+        <div id='details'>
+        <form id="editForm" action="" method="post">
+            <div id='editUsername'>
+                <label for="username" id="username">Username: <?php echo $user->getData()->username; ?> </label>
+            </div><div id='editEmail'>
+                Email address: <input for="email" name="email" id="editEmail" placeholder='<?php echo $user->getData()->email ?>'>
+            </div><div id='editname'>
+                Name: <input for="name" name="name" id="editname" placeholder='<?php echo $user->getData()->firstName ?>'>
+            </div><div id='editsurname'>
+                Surname: <input for="surname" name="surname" id="editsurname" placeholder=<?php echo $user->getData()->lastName?>>
+            </div><div id='editAge'>
+             Age: <input for="age" name="age" id="editAge" placeholder= <?php echo $user->getData()->age?>>
+            </div><div id='editPassword'>
+                <button class='editPassbtn' type="button" id='openPassWindow'>click here to change your password</button>
+            </div><div>
+                <!-- <button class='editbtn' type="button" id='hideEdit' onclick="hideOverlay()">Abort</button> -->
+                <button class='editbtn' id='submit' type="submit">Submit changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
 
 <script>
 // Get the modal
