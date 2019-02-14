@@ -70,6 +70,10 @@ class User{
       return false;
   }
 
+  public function updateProfile(){
+    
+  }
+
   public function logout(){
     Session::deletSession($this->_userSession);
   }
