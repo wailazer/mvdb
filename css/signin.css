@@ -1,0 +1,161 @@
+/* Style sheet for both, signin and register */
+
+#userform{
+  display: block;
+}
+
+#signin-form {
+  margin: 0 auto;
+  display: table;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 200px 0;
+}
+
+#top-row, #middle-row, #button-row, #regester a{
+  /* display: table-table-row; */
+  margin: 20px 20px 20px 20px;
+}
+
+#top-row > #username, #middle-row > #password{
+  float: right;
+  width: 300px;
+  height: 35px;
+}
+
+#middle-row > #password{
+  float: right;
+}
+
+#button-row > #signin-btn{
+  float: right;
+}
+
+#regester > a{
+  /* position: relative; */
+  float: right ;
+}
+
+#regester {
+
+  padding: 80px;
+  float: right;
+  text-align: right;
+}
+
+#back-div{
+  background-image: url("../images/signin.png");
+  background-color: #cccccc;
+  height: 1000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+#inner-back-div{
+  border-radius: 20px;
+  width: 400px;
+  height: 500px;
+  float: left;
+  background-color: white;
+  opacity: .5;
+  margin: 100px 200px;
+  /* font-weight: bold; */
+}
+
+
+/* register inner styling starts here */
+
+#back-reg-div{
+  background-image: url("../images/bl.jpg");
+  background-color: #cccccc;
+  height: 1000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+#inner-reg-div{
+  display: table;
+  border-radius: 20px;
+  width: 800px;
+  height: 500px;
+  float: left;
+  background-color: white;
+  opacity: .5;
+  margin: 150px 500px;
+  /* font-weight: bold; */
+}
+
+#reg-form {
+  display: table-cell;
+  /* align-items: center; */
+  text-align: center;
+  /* position: relative; */
+  /* padding: 20% 0; */
+}
+ #left {
+  display: table-column;
+  width: 30%;
+  height: 100%;
+  float: left;
+  
+}
+#right {
+  width: 70%;
+  height: 100%;
+  float: right;
+  margin-top: 10%;
+}
+
+/* #reg-user {
+  float: right;
+ */
+/* } */
+
+#happy-reg{
+  display: table-cell;
+}
+
+#reg-top, #reg-2nd, #reg-3ed, #reg-4th, #reg-5th, #reg-6th{
+  display: table-cell;
+  float: right;
+  margin: 5px;
+  width: 99%;
+  height: 45px;
+  /* align-self: center;   */
+}
+
+#reg-form > div > input , #reg-submit{
+  float: right;
+  width: 95%;
+  height: 40px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 0 auto;
+  /* margin-b */
+}
+
+#happy-reg > img {
+  margin-top: 50%;
+}
+
+#reg-submit {
+ border-radius: 20px;
+ font-family: 'Times New Roman', Times, serif;
+ font-weight: bold;
+ width: 100%;
+ font-size: 20px;
+ opacity: 1;
+ /* color: blue; */
+ background-color: red;
+ margin-top: 7%;
+}
+
+#sbmt {
+  padding-top: 25%;
+}

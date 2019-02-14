@@ -1,0 +1,136 @@
+		html, body{
+			margin: 0;
+			padding: 0;
+			font-family: Helvetica, Arial , sans-serif;
+            height: 91%;
+		}
+		
+		#top-bar{
+			width: 100%;
+			height: 10%;
+			margin: 0 auto;
+			background-color:red;
+			padding-top: 10px;
+			/* height:50px; */
+
+
+		}
+
+		#top-bar > {
+			margin: 0 auto;
+		}
+		#top-bar a:hover{
+			text-decoration: underline;
+		}
+
+		
+		
+		#top-bar > .topbar-section{
+			float: left;
+			border-left: 5px #CCCCCC solid;
+			position: relative;
+			top: 5px;
+		}
+		
+		#logo img{
+			width: 40px;
+			float: left;
+			margin: 0 10px 1px 10px;
+			position: relative;
+			top: 5px;
+		}
+		
+		#top-bar a{
+			color: white;
+			font-size: 30px;
+			position: relative;
+			top: 7px;
+			float: left;
+			/* border-left: 1px grey solid; */
+			margin: 0 10px 10px 10px;
+			text-decoration: none;
+		}
+		
+		/* #signin > a:hover, #top-bar > .topbar-section a{
+			text-decoration: underline;
+		} */
+
+		#search{
+				background-color: #E4E4E4;
+				border: none;
+				font-weight: bold;
+				font-size: 14px;
+				padding: 5px;
+				margin: 5px;
+				float: right !important;
+			}
+		#search > input {
+			width: 300px;
+			height: 30px;
+			padding-left: 10px;
+
+		}
+		
+		#mag-search {
+			color: red;
+			padding-bottom: 5px;
+		}
+		
+			.clear{
+				clear: both;
+			}
+
+			#hero-image{
+				width: 100%;
+				margin: 0 auto;
+
+			}
+			#hero-text h3{
+				/* margin: 0 auto; */
+				padding: 23%;
+				text-align: center;
+				float: none;
+				color: white;
+			}
+			.inner{
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				background-color:#575557;
+				opacity: 0.8;
+
+			}
+
+			footer{
+				width: 100%;
+				margin: 0 auto;
+				padding: 0;
+				background-color:red;
+				height:10%;
+			}
+			#foot-bar{
+				width: 100%;
+				margin: 0 auto;
+				background-color:red;
+				height:80px;
+			}
+			#foot-bar > #copyright{
+				float: right;
+				position: relative;
+				top: 5px;
+				margin: 0 10px
+			}
+
+			#foot-bar > #copyright a{
+				text-decoration: none;
+				color: white;
+			}
+
+			#foot-bar > #copyright a:hover{
+				text-decoration: underline;
+				color: white;
+			}
+
+
+/* library.php style */
+

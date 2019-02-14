@@ -1,0 +1,12 @@
+#logo img{
+  width: 40px;
+  float: left;
+  margin: 0 10px 1px 10px;
+  position: relative;
+  top: 5px;
+}
+
+
+#headline{
+	text-align: center;
+}

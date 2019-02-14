@@ -1,0 +1,32 @@
+body > #hd1 > #head_div > #hh{
+  display: table-cell;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: red;
+
+}
+
+html, body{
+  display: table;
+	height: 100%;
+  color: black;
+  text-align: center;
+}
+
+main > {
+  text-align: right;
+  color: blue;
+}
+
+#hh{
+  color: red;
+}
+
+#hd1 {
+    color: red;
+}
+div{
+  text-align: center;
+  color: red;
+}
