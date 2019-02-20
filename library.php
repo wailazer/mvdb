@@ -30,6 +30,11 @@ if (Input::exists()) {
     if ($validation->passed()) {
         // echo 'passed the validation';
         $movie = new Movie();
+        ?>
+        <script>
+        var g = document.getElementById('genre').value;
+        </script>
+        <?php 
         // print_r(  $movie);
         try {
           $movie->insertMovie(array(
@@ -38,9 +43,13 @@ if (Input::exists()) {
               'duration' => Input::get('duration'),
               'FSK' => Input::get('FSK'),
             'cover' => Input::get('cover'),
+            'genre' => Input::get('cover')
             ));
           ' <script type="text/javascript">
                   alert("Thank you")
+
+                  echo "<script> g </script>"
+
                  </script>';
           // Redirect::toPage('index.php');
 
@@ -128,7 +137,7 @@ if ($user->loggedIn()) {
                         <option value=1>Select Genre</option>
                         <?php
                             foreach ($genre as $id => $name) {  
-                            echo '<option class="opts" value='.$id.'>'.$name.'</option>';
+                            echo '<option class="opts" id="genre" name="genre" value='.$id.'>'.$name.'</option>';
                             };
                         ?>
 

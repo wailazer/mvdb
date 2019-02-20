@@ -143,21 +143,46 @@ class DB {
 
   }
   public function insert($table, $fields = array()){
-      $keys = array_keys($fields);
-      $values = null;
-      $x = 1;
-      foreach($fields as $field){
-        $values .= '?';
-        // print_r($field);
-        if ($x < count($fields)) {
-          $values .=', ';
-          // print_r($fields);
-        }
-        $x++;
+    $movie=array();
+    $genre=array();
+    foreach ($fields as $key => $value) {
+      if ($key === 'name') {
+        $genre[$key] =$value;
+      }else {
+        $movie[$key]= $value;
       }
-      // print_r($field, $values);
+      // return $movie;
+    }
+    
+    $keys = array_keys($movie);
+    $values = null;
+    $x = 1;
+    foreach($movie as $field){
+      // echo 'in 2nd foreach!!!';
+      $values .= '?';
+      // print_r($field);
+      if ($x < count($movie)) {
+        $values .=', ';
+        // print_r($fields);
+      }
+      $x++;
+    }
+    // print_r($field, $values);
+    //if genre;
+    if (!empty($genre)) {
+      $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values};
+      insert into movie_has_genre (movie_id, genre_id) select movie.id, genre.id from movie, genre where title='{$movie['title']}' and name = '{$genre['name']}';
+
+      )" ;
+       if (!$this->query($sql, $fields)->error()) {
+
+        return true;
+      }
+    return false;
+
+    }else{
       $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values})" ;
-      // print_r($sql);
+      print_r($sql);
       //implode makes a string seperated by first argument
       // echo $sql;
       if (!$this->query($sql, $fields)->error()) {
@@ -165,7 +190,8 @@ class DB {
         return true;
       }
     return false;
-  }
+}
+}
 
   public function update($table, $id, $fields){
     $set = "";

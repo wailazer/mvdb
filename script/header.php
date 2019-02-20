@@ -6,7 +6,7 @@
 
 <div id="top-bar">
     <div id="logo" class="top-section">
-       <img class="topbar-section" src="images/_logo.png" alt="logo">
+      <a href="index.php"><img class="topbar-section" onclick="function()" src="images/_logo.png" alt="logo"></a>
     </div>
 
     <div id="signin">

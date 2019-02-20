@@ -52,18 +52,88 @@
 </style>
 <?php
 require_once 'core/init.php';
-$user = new User();
+$user = "";
 // print_r($user->getData()->age);
 // $user->updateProfile(array('agee' => 40));
 // print_r($user->getData()->age);
+// public function insert($table, $fields = array()){
+  $fields = array('name' => "wail" , 'lastrname' => 'Azer', 'some' => 'thing', 'out' => 'with it' );
+  function getArray($fields){
+    $movie = array();
+  foreach ($fields as $key => $value) {
+    if ($key === 'name') {
+      // echo $key;
+      $genre = [$key=>$value];
+      print_r($genre);
+    }else {
+      $movie[$key]= $value;
+      // $movie = [$key => $value];
+    }
+    print_r($movie);
+  }
+}
 
 
+  getArray($fields);
 
-if (Input::exists()) {
+  // -------------------------------------------------------------------
+  // ___________________________________________________________________
+
+  function insert($table, $fields = array()){
+    
+    foreach ($fields as $key => $value) {
+      if ($key === 'name') {
+        $genre = [$key=>$value];
+        return $genre;
+      }else {
+        $movie = [$key => $value];
+        return $movie;
+        }
+      }
+    
+    $keys = array_keys($movie);
+    $values = null;
+    $x = 1;
+    foreach($movie as $field){
+      $values .= '?';
+      // print_r($field);
+      if ($x < count($movie)) {
+        $values .=', ';
+        // print_r($fields);
+      }
+      $x++;
+    }
+    // print_r($field, $values);
+    //if genre;
+    if (!empty($genre)) {
+      $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values};
+      insert into movie_has_genre (movie_id, genre_id) select movie.id, genre.id from movie, genre where title='{$movie['title']}' and name = '{$genre['name']}';
+
+      )" ;
+       if (!$this->query($sql, $fields)->error()) {
+
+        return true;
+      }
+    return false;
+
+    }else{
+      $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values})" ;
+      // print_r($sql);
+      //implode makes a string seperated by first argument
+      // echo $sql;
+      if (!$this->query($sql, $fields)->error()) {
+
+        return true;
+      }
+    return false;
+}
+}
+
+// if (Input::exists()) {
   
-  // echo Input::get('email');
-  $validate = new Validate();
-  $validation = $validate->check($_POST, array(
+//   // echo Input::get('email');
+//   $validate = new Validate();
+//   $validation = $validate->check($_POST, array(
       // 'newPass' => array(
       //     'min' => 8,
       //     'required' => true,
@@ -73,37 +143,37 @@ if (Input::exists()) {
       // 'required' => true,
       // 'matches' => 'newPass'
       // ),
-  ));
+  // ));
   // if ($validation->passed()) {
-      $fields = array();
-      if (!empty(Input::get('email')) ){
-        $fields['email'] = Input::get('email');
-      }
-      if (!empty(Input::get('newPass'))){
-        $fields['pwd']= Input::get('newPass');
-      }
-      if (!empty(Input::get('name'))){
-        $fields['firstName']= Input::get('name');
-      }
-      if (!empty(Input::get('surname'))){
-        $fields['lastName']= Input::get('surname');
-      }
-      if (!empty(Input::get('age'))){
-        $fields['age']= Input::get('age');
-      }
-        // print_r($fields);
-      try {
-          $user->updateProfile($fields);
-          header("Refresh:0");
-      } catch ( Exception $e) {
-          die($e->getMessage());
-      }
+      // $fields = array();
+      // if (!empty(Input::get('email')) ){
+      //   $fields['email'] = Input::get('email');
+      // }
+      // if (!empty(Input::get('newPass'))){
+      //   $fields['pwd']= Input::get('newPass');
+      // }
+      // if (!empty(Input::get('name'))){
+      //   $fields['firstName']= Input::get('name');
+      // }
+      // if (!empty(Input::get('surname'))){
+      //   $fields['lastName']= Input::get('surname');
+      // }
+      // if (!empty(Input::get('age'))){
+      //   $fields['age']= Input::get('age');
+      // }
+      //   // print_r($fields);
+      // try {
+      //     $user->updateProfile($fields);
+      //     header("Refresh:0");
+      // } catch ( Exception $e) {
+      //     die($e->getMessage());
+      // }
   // }else {
   //     foreach ($validation->getErrors() as $error) {
   //       echo $error, '<br>';
   //     }
   // }
-}
+// }
 
 ?>
 </head>
@@ -125,7 +195,7 @@ if (Input::exists()) {
     </div>
 </div>
 
-<div id="userEdit" style='display: table-cell'>
+<!-- <div id="userEdit" style='display: table-cell'>
         <div id='details'>
         <form id="editForm" action="" method="post">
             <div id='editUsername'>
@@ -141,12 +211,12 @@ if (Input::exists()) {
             </div><div id='editPassword'>
                 <button class='editPassbtn' type="button" id='openPassWindow'>click here to change your password</button>
             </div><div>
-                <!-- <button class='editbtn' type="button" id='hideEdit' onclick="hideOverlay()">Abort</button> -->
+                <button class='editbtn' type="button" id='hideEdit' onclick="hideOverlay()">Abort</button>
                 <button class='editbtn' id='submit' type="submit">Submit changes</button>
             </div>
             </form>
         </div>
-    </div>
+    </div> -->
 
 <script>
 // Get the modal
@@ -175,3 +245,63 @@ window.onclick = function(event) {
 
 
 </script>
+
+
+
+
+
+<!-- 
+
+  function insert($table, $fields = array()){
+    $movie=array();
+    $genre=array();
+    foreach ($fields as $key => $value) {
+      if ($key === 'name') {
+        $genre[$key] =$value;
+      }else {
+        $movie[$key]= $value;
+      }
+      // return $movie;
+    }
+    
+    $keys = array_keys($movie);
+    $values = null;
+    $x = 1;
+    foreach($movie as $field){
+      // echo 'in 2nd foreach!!!';
+      $values .= '?';
+      // print_r($field);
+      if ($x < count($movie)) {
+        $values .=', ';
+        // print_r($fields);
+      }
+      $x++;
+    }
+    // print_r($field, $values);
+    //if genre;
+    if (!empty($genre)) {
+      $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values};
+      insert into movie_has_genre (movie_id, genre_id) select movie.id, genre.id from movie, genre where title='{$movie['title']}' and name = '{$genre['name']}';
+
+      )" ;
+       if (!$this->query($sql, $fields)->error()) {
+
+        return true;
+      }
+    return false;
+
+    }else{
+      $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values})" ;
+      print_r($sql);
+      //implode makes a string seperated by first argument
+      // echo $sql;
+      if (!$this->query($sql, $fields)->error()) {
+
+        return true;
+      }
+    return false;
+}
+}
+
+
+-->
